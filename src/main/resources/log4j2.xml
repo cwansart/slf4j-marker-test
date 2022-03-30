@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="error" strict="true" name="XMLConfigTest"
+               packages="de.cwansart.markertest">
+    <Appenders>
+<!--        <Appender type="Console" name="DONT_SHOW_FATAL">-->
+<!--            <Filters>-->
+<!--                <Filter type="MarkerFilter" marker="FATAL" onMatch="DENY" onMismatch="NEUTRAL"/>-->
+<!--                <Filter type="MarkerFilter" marker="HIDDEN" onMatch="DENY" onMismatch="NEUTRAL"/>-->
+<!--            </Filters>-->
+<!--        </Appender>-->
+        <Appender type="Console" name="SHOW_FATAL">
+            <Filters>
+                <Filter type="MarkerFilter" marker="FATAL" onMatch="ACCEPT" onMismatch="NEUTRAL"/>
+                <Filter type="MarkerFilter" marker="HIDDEN" onMatch="DENY" onMismatch="NEUTRAL"/>
+            </Filters>
+        </Appender>
+        <Appender type="File" name="HIDDEN_FILE" fileName="target/hidden.log">
+            <Filters>
+                <Filter type="MarkerFilter" marker="HIDDEN" onMatch="ACCEPT" onMismatch="NEUTRAL"/>
+                <Filter type="MarkerFilter" marker="FATAL" onMatch="DENY" onMismatch="NEUTRAL"/>
+            </Filters>
+        </Appender>
+    </Appenders>
+
+    <Loggers>
+<!--        <Logger name="de.cwansart.markertest" level="error" additivity="true">-->
+<!--            <AppenderRef ref="DONT_SHOW_FATAL"/>-->
+<!--        </Logger>-->
+        <Logger name="de.cwansart.markertest" level="error" additivity="false">
+            <AppenderRef ref="SHOW_FATAL"/>
+        </Logger>
+        <Logger name="de.cwansart.markertest" level="error" additivity="true">
+            <AppenderRef ref="HIDDEN_FILE"/>
+        </Logger>
+    </Loggers>
+
+</Configuration>
