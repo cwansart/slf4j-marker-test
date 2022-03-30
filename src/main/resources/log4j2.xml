@@ -29,7 +29,7 @@
         <Logger name="de.cwansart.markertest" level="error" additivity="false">
             <AppenderRef ref="SHOW_FATAL"/>
         </Logger>
-        <Logger name="de.cwansart.markertest" level="error" additivity="true">
+        <Logger name="de.cwansart.markertest" level="error" additivity="false">
             <AppenderRef ref="HIDDEN_FILE"/>
         </Logger>
     </Loggers>
